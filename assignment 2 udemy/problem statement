@@ -1,0 +1,30 @@
+In the previous assignment you created the following class ~ CurrencyConverter. There were two additional variables 'dollar' & 'Rupee', which were the last two variables. They are not needed anymore and hence removed from the below class.
+For this assignment, you would modify the below class and replace all the variables with a single array. The variables have int data type. However, instead of creating an int[] array, let's make it a double[] as it makes more sense to represent currency via double rather than int. The array elements will be in the same order as the variables in the below class, i.e., 0th element will be 63.0, 1st will be 3.0, 2nd will be 3.0, etc. You can name the array as exchangeRates. printCurrencies should also be updated accordingly, i.e., first print statement would be as follows. Also, in the last print statement, which prints the value of the last element in the array, use 'length' field to print the value. Recall that exchangeRates.length would return the size of the array.
+System.out.println("rupee: " + exchangeRates[0]);
+
+public class CurrencyConverter {
+int rupee = 63;
+int dirham = 3; // UAE
+int real = 3;   // brazilian
+   
+int chilean_peso = 595;
+int mexican_peso = 18;   
+   
+int _yen = 107;
+int $australian = 2;   
+   
+void printCurrencies() {
+System.out.println("rupee: " + rupee);
+         System.out.println("dirham: " + dirham);
+         System.out.println("real: " + real);
+         System.out.println("chilean_peso: " + chilean_peso);
+         System.out.println("mexican_peso: " + mexican_peso);
+         System.out.println("_yen: " + _yen);
+         System.out.println("$australian: " + $australian);
+}
+   
+public static void main(String[] args) {
+     CurrencyConverter cc = new CurrencyConverter();
+     cc.printCurrencies();
+}
+}
