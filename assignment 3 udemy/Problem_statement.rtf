@@ -1,0 +1,87 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 HelveticaNeue-Bold;}
+{\colortbl;\red255\green255\blue255;\red21\green22\blue24;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c10980\c11373\c12157;\cssrgb\c100000\c100000\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 As in the previous assignment, I would suggest implement the solution in\'a0 code, compile & run. You can then copy the code in the Submission area. Once submitted, you can click Next to view the Instructor Example,\'a0 where the solution will be shown for you to cross-check.\'a0\'a0 \'a0\cb1 \
+\pard\pardeftab720\sa192\partightenfactor0
+
+\f1\b\fs38\fsmilli19200 \cf2 \cb3 Questions for this assignment\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0\fs32 \cf2 \cb3 In the previous lecture on Method Types, we extended the CurrencyConverter class. It was also mentioned that such a class can be used by a\'a0
+\f1\b Money Transfer Service
+\f0\b0 \'a0company such as PayPal, which can be used for transferring money from one country to another. In this simple assignment let's just do that by creating a new class called\'a0
+\f1\b MoneyTransferService
+\f0\b0 , which uses the functionality of CurrencyConverter class. The CurrencyConverter class extended in the previous lecture is provided below with the only change being method parameter name 'arrayIndex' has been renamed to 'countryIndex' in all the methods to make it more meaningful. MoneyTransferService class would declare a single instance variable '
+\f1\b CurrencyConverter cc = new CurrencyConverter();
+\f0\b0 ' and it would include the following two methods.\cb1 \
+\cb3 +\'a0
+\f1\b computeTransferAmount
+\f0\b0 : Has the same method signature as computeTransferAmount in CurrencyConverter and returns a double. The method simply invokes computeTransferAmount on the instance variable 'cc' and passes its method parameters as arguments. Recall that computeTransferAmount simply takes (array) index of a given country & amount in US dollars and returns the corresponding amount to be transferred in the local currency of the given country. So, this method simply delegates to the computeTransferAmount in CurrencyConverter class\cb1 \
+\cb3 +\'a0
+\f1\b computeTransferFee
+\f0\b0 : The fee charged to transfer a certain amount to a country. This method takes the same parameters as the above computeTransferAmount method, i.e, countryIndex & amount. The method's return type is double and it would be transfer fee. The method first invokes the above method to get the amount to be transferred in local currency, which would then be multiplied with 2% (i.e., 0.02), which is then returned.\cb1 \
+\cb3 I would recommend first implementing the assignment in code. So, create\'a0
+\f1\b MoneyTransferService.java & CurrencyConverter.java\'a0
+\f0\b0 in the same directory.
+\f1\b \'a0
+\f0\b0 Include the following main() method in MoneyTransferService for testing. After compiling the above files, just run MoneyTransferService. It prints 63000 for Transfer Amount as we are passing 0 for country index & 1000 for amount. Country Index 0 corresponds to India rupees whose exchange rate is 63 and so we get 63000 (63 * 1000). Transfer fee would be 1260, i.e., 63000 * 0.02. Note that main() method has been removed from CurrencyConverter class as it is not needed. You can see how in the main method below we are creating a MoneyTransferService object, which in turn is using the services offered by CurrentConverter object (via 'cc' instance variable) by invoking its computeTransferAmount() method. So, we can see the object-to-object communication in action.\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 \cb3 Transfer Amount
+\f0\b0 : 63000.0\cb1 \
+
+\f1\b \cb3 Transfer Fee
+\f0\b0 : 1260.0\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 public static void main(String[] args) \{\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 MoneyTransferService transferService = new MoneyTransferService();\cb1 \
+\
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 double transferAmount = transferService.computeTransferAmount(0, 1000);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 double transferFee = transferService.computeTransferFee(0, 1000);\cb1 \
+\
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 System.out.println("Transfer Amount: " + transferAmount);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 System.out.println("Transfer Fee: " + transferFee);\cb1 \
+\cb3 \}\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 \cb3 CurrencyConverter.java
+\f0\b0 :\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 public class CurrencyConverter \{\'a0 \'a0\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 // Currency exchange rates of different currencies relative to 1 US dollar\cb1 \
+\cb3 \'a0 \'a0 \'a0\'a0 double[] exchangeRates = new double[] \{63.0, 3.0, 3.0, 595.5, 18.0, 107.0, 2.0\};\cb1 \
+\cb3 \'a0 \'a0\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0void setExchangeRates(double[] rates) \{\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0exchangeRates = rates;\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
+\
+\cb3 \'a0 \'a0 \'a0 \'a0 void updateExchangeRate(int countryIndex, double newVal) \{\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0exchangeRates[countryIndex] = newVal;\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
+\
+\
+\cb3 \'a0 \'a0 \'a0 \'a0 double getExchangeRate(int countryIndex) \{\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 return exchangeRates[countryIndex];\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
+\
+\cb3 \'a0 \'a0 \'a0 \'a0 double computeTransferAmount(int countryIndex, double amount) \{\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 return amount * getExchangeRate(countryIndex);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
+\cb3 \'a0 \'a0\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 void printCurrencies() \{\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0System.out.println("\\nrupee: " + exchangeRates[0]);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0System.out.println("dirham: " + exchangeRates[1]);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0System.out.println("real: " + exchangeRates[2]);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0System.out.println("chilean_peso: " + exchangeRates[3]);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0System.out.println("mexican_peso: " + exchangeRates[4]);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0System.out.println("_yen: " + exchangeRates[5]);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0System.out.println("$australian: " + exchangeRates[exchangeRates.length-1]);\cb1 \
+\cb3 \'a0 \'a0 \'a0 \'a0\}\cb1 \
+\cb3 \}\cb1 \
+}
