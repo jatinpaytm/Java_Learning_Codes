@@ -1,0 +1,50 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 HelveticaNeue-BoldItalic;
+}
+{\colortbl;\red255\green255\blue255;\red21\green22\blue24;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c10980\c11373\c12157;\cssrgb\c100000\c100000\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs45\fsmilli22800 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Computing GPA ~ Putting Operators & Control-flow to Test\
+
+\f1\b0\fs32 In this simple exercise, you will put some of the operators & control-flow statements we learned into use. for-loop will also be required for this exercise and where possible try to use\'a0
+\f2\i\b for-each
+\f1\i0\b0 \'a0instead of traditional for statement. A Java file called StudentUtil has been provided, which includes two static methods calculateGPA &\'a0getStudentsByGPA. Your goal is two fill these two methods. Below is what these methods do:\cb1 \
+\cb3 double[]\'a0
+\f0\b calculateGPA
+\f1\b0 (int[] studentIdList, char[][] studentsGrades):\cb1 \
+\cb3 In many Universities across the World, common way to judge a student's performance in a semester or even for the entire program is through GPA (Grade Point Average). GPA of a student is computed by taking an average of the grades received for the courses taken by the student. For this exercise, we can have only 3 grades: A, B, C. Grades A, B, and C correspond to the points 4, 3, and 2\'a0respectively. So, let's say if a student has received the grades A, A, A, and B for 4 courses taken in a semester, then his/her GPA would be (4 + 4 + 4 + 3) / 4 = 3.75, i.e., points corresponding to the grades are taken to compute the average. This method takes two parameters studentIdList (1D array) & studentsGrades (2D array) and returns a 1D array containing GPAs. Here is a sample input & output:\cb1 \
+
+\f0\b \cb3 Input
+\f1\b0 :\cb1 \
+\cb3 studentIdList = \{1001, 1002\} ~ Includes students IDs\cb1 \
+\cb3 studentsGrades = \{ \{ 'A', 'A', 'A', 'B' \}, \{ 'A', 'B', 'B' \} \} ~ Each element in this 2D array corresponds to grades of the above students, i.e., \{'A', 'A', 'A', 'B' \} corresponds to grades received for 4 courses by student with ID 1001 and \{'A', 'A', 'B'\} corresponds to grades received for\'a03 courses by student with ID 1002\cb1 \
+
+\f0\b \cb3 output
+\f1\b0 \'a0= \{3.75, 3.3333\} ~ 3.75 here corresponds to GPA of student with ID 1001\cb1 \
+\cb3 So, input array studentsGrades includes grades as characters and you need to use the corresponding int points (2, 3, 4). Also, note that each element in studentsGrades can be of varying lengths. For example in the above sample data, first element has 4 grades while second has 3 grades.\'a0
+\f0\b Note that the above data is ONLY sample data to explain the problem, i.e., method parameters studentIdList &\'a0studentsGrades can be invoked with any such data
+\f1\b0 .\cb1 \
+\cb3 int[]\'a0
+\f0\b getStudentsByGPA
+\f1\b0 (double lower, double higher, int[] studentIdList, char[][] studentsGrades):\cb1 \
+\cb3 This method returns students (array) whose GPA is in the range lower & higher, i.e., lower <= GPA <= higher.\'a0studentIdList &\'a0studentsGrades are same as in calculateGPA method. Since GPA needs to be calculated here, you should use the calculateGPA method. Here is a sample input & output:\cb1 \
+\cb3 lower = 3.2\cb1 \
+\cb3 higher = 3.5\cb1 \
+\cb3 studentIdList = \{1001, 1002\}\cb1 \
+\cb3 studentsGrades = \{ \{ 'A', 'A', 'A', 'B' \}, \{ 'A', 'B', 'B' \} \}\cb1 \
+
+\f0\b \cb3 output
+\f1\b0 : \{1002\}\'a0\cb1 \
+\cb3 Note that the returned array can have a size different from size of studentIdList as in the above example where the returned array has only one element 1002\cb1 \
+\cb3 Also, if lower or higher is a negative number or if lower > higher, then the method should return a\'a0
+\f0\b null
+\f1\b0 . Such a check on method parameters\'a0 is referred to as\'a0
+\f0\b parameter validation
+\f1\b0 \'a0as it is ensuring that the values that the parameter get assigned are valid and if not a null is returned. Add this parameter validation logic at the beginning of the method. Note that lower & higher can be equal too.\cb1 \
+\cb3 Once you submit your solution, it will be auto-evaluated by JUnit scripts and you will know if your program is working correctly or not. So, make sure to submit your solution for verification of program correctness.\cb1 \
+\cb3 If you have any questions, do let me know in the Q&A section. Have fun!!\cb1 \
+}
