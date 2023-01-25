@@ -1,0 +1,21 @@
+Hospital Management System (HMS) ~ Let's put Inheritance into practice!
+
+Since we now have a basic understanding of inheritance and IS-A test, let’s now put them into practice through this simple exercise. In this assignment, we will implement a simple class hierarchy for users of a Hospital Management System (HMS). A HMS can help Hospitals to track everything from user registration to patient treatment to rooms allotted to in-patients and so on. In this particular exercise, let’s restrict ourselves to implementing only different types of Users. The exercise will be further extended with a Billing Component after completing couple of more lectures (on a topic called Polymorphism).
+
+Users can be of three types: Patient, Doctor, and Nurse. Doctor & Nurse are Staff members (i.e., Doctor IS-A Staff & Nurse IS-A Staff) and all of them (i.e., Patient, Doctor, Nurse, and Staff) are of type User. Below are details of each class along with information about their instance variables including their data types indicated in parenthesis.  
+
+User: id (long), firstName (String), lastName (String), gender (String), email (String)  
+
+Patient: patientId (long), insured (boolean)  
+
+Staff: staffId (long), yearsOfExperience (int), description (String), salary (double)  
+
+Doctor: doctorId (long), specialization (String)  
+
+Nurse: nurseId (long)  
+
+As part of this assignment, you would implement the above classes. Classes should reflect the inheritance relationship and it should be straightforward as it is very similar to the class hierarchy in our case study.  Classes should include the getters & setters for each of the fields. Make sure to follow correct naming convention for getters & setters as one of the fields is a boolean (covered in Naming Conventions lecture in Section 6). Note that for something like doctorId, getter would be named as getDoctorId (‘D’ in CAPS) and setter would be named as setDoctorId (‘D’ in CAPS) and similar convention applies for all other methods. Also, do notice how the variables have been named (e.g., yearsOfExperience) as discussed in naming conventions lecture. Finally, make sure to use private access modifiers for all fields and getters & setters would be public (remember Information Hiding principle!). Code has been provided for the id field along with its getter & setter in the User class.
+
+Your code will be tested for correctness via automated tests. So, do submit your code to check for correctness. If you  are unable to complete the exercise after considerable effort, then feel free to private message (pls. do not submit in Q&A discussion board) me your code and I can provide feedback.  
+
+Thanks & Happy Coding!!
