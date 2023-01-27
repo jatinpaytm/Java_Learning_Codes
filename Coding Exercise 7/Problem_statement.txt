@@ -1,0 +1,56 @@
+Extending HMS with a Billing Component ~ Putting Polymorphism into Practice!
+Let’s now extend the HMS system that was implemented in the previous exercise with Billing Component, which would be responsible for billing a patient. Patient & User classes are needed for this exercise. In this exercise, we will put polymorphism concept & instanceof operator into practice. This exercise should give you a better feel on how nicely object-oriented programming models real-world scenarios.  
+
+When a patient is being billed after treatment, hospitals would apply any insurance that the patient may be having. That way the insurance company would pay a part of the medical bill and the remaining will be paid by patient. Insurance policies vary from country to country. In this exercise, we employ a simple insurance policy structure that is more or less followed in US.  
+
+Let’s assume we have the following four classes that represent four insurance plans and a patient can buy one of them. Platinum plan has the highest coverage of 0.9, i.e., it covers 90% of the total medical expenses and the patient would pay the remaining 10%. So, if the total medical expense was $1000, then the insurance company would pay $900 ($1000 * 0.9) while the patient would pay the remaining $100. The coverage offered by GoldPlan, SilverPlan, and BronzePlan are 0.8, 0.7, and 0.6 respectively. All of the below four classes would extend another class called HealthInsurancePlan, which is provided with this exercise. Coverage is indicated by a double field named ‘coverage’ and would be part of HealthInsurancePlan class. Corresponding getter (getCoverage) & setter (setCoverage) should also be provided for 'coverage'. Making 'coverage' and its getter & setter part of HealthInsurancePlan and not part of its sub-classes would help avoid code duplication (a benefit of inheritance). However, specific sub-classes (e.g., PlatinumPlan) would set the appropriate value for the coverage field and they can do it from their constructors.
+
+PlatinumPlan  
+
+GoldPlan  
+
+SilverPlan  
+
+BronzePlan  
+
+Next, you need to add a new field called ‘insurancePlan’, which is of type HealthInsurancePlan to the Patient class (implemented in previous exercise) and leave this field uninitialized, i.e., gets a default of null. This field would indicate the insurance plan that a patient has. So, it indicates a HAS-A relationship, which was mentioned in the lecture that discussed IS-A Test. This field 'insurancePlan' would be set by setter (setInsurancePlan) and also has corresponding getter (getInsurancePlan). getter would have a return type of HealthInsurancePlan while setter would have a parameter whose type is HealthInsurancePlan. As you can see, setInsurancePlan(HealthInsurancePlan) would give us the polymorphism benefit as we can pass an instance of any of the above 4 classes.
+
+Next, you would implement the billing logic, which goes into a new class called Billing.java, which would have a single static method called computePaymentAmount. Template code is provided for this class and is copied below. Input to this method is a Patient object & 'amount', which is a double value indicating the amount the patient is billed before applying insurance. The method returns a double[] and its first element would have the amount that the insurance company would pay while second element would have the amount that patient has to pay. As mentioned above, you need to make use of 'coverage' of the insurance plan. Note that some patients may not have any insurance plan in which case 'patient.getInsurancePlan()' in the below code would return a null and you need to have the necessary logic in place to ensure that it does not lead to a NullPointerException. Once the patient's part is computed, additional discount should be applied on the patient's part depending on their insurance plan, which is as follows:
+
+PlatinumPlan: $50 discount
+
+GoldPlan: $40 discount
+
+SilverPlan: $30 discount
+
+BronzePlan: $25 discount
+
+If the patient does not have any insurance plan, then a discount of $20 is applied. 
+
+As an example, if the patient uses Platinum Plan and if the total amount billed is $1000, then after applying the coverage of 0.9, patient's part would be $100. Up on applying the discount of $50 for Platinum, the final amount that patient has to pay would be only $50.
+
+HINT: You can use instanceof operator to identify the correct insurance plan and then you can apply the appropriate discount for that particular insurance plan.
+
+public class Billing {
+    public static double[] computePaymentAmount(Patient patient, double amount) {
+        double[] payments = new double[2];
+        
+        HealthInsurancePlan patientInsurancePlan = patient.getInsurancePlan();
+ 
+        // your logic        
+ 
+        return payments;
+    }
+}
+For your convenience, I am providing the below code that you can use for testing purpose in your main method:
+
+HealthInsurancePlan insurancePlan = new PlatinumPlan();        
+Patient patient = new Patient();
+patient.setInsurancePlan(insurancePlan);
+        
+double[] payments = Billing.computePaymentAmount(patient, 1000.0);
+Finally, HealthInsurancePlan class has a field called 'offeredBy' which is of type InsuranceBrand (code provided with exercise). You can ignore both this field and the InsuranceBrand class as they are not relevant to this exercise and will come into play in one of the later exercises. In real-world, a health insurance policy is offered by some company (e.g., in US it would be a company like Blue Cross Blue Shield) and this field represents that company. 
+
+Your code will be tested for correctness via automated tests. So, do submit your code to check for correctness. If you are unable to complete the exercise after considerable effort, then feel free to private message (pls. do not submit in Q&A discussion board) me your code and I can provide feedback.  
+
+Thanks & Happy Coding!!
