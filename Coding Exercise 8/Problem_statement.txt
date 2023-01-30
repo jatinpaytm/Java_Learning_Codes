@@ -1,0 +1,18 @@
+Computing Health Insurance Premium for Staff ~ 
+Let's put Abstract Classes & Methods into practice!
+
+This is a very simple exercise and it would enable us to use abstract classes & methods. In this exercise, we will extend the HMS system. Earlier we introduced a billing component to bill the patients, which was dependent on their insurance plan (platinum/gold/silver/bronze). Let's now build something for staff members. Like patients, staff members would also need health insurance. So, as employees of the Hospital, every month staff members would be paying a premium (i.e., some amount of money) towards their health insurance. In this exercise we would compute this monthly premium, which would be dependent on the chosen insurance plan (i.e., platinum/gold/silver/bronze) along with monthly salary of the staff member. For platinum it would be 8% of the salary, for gold it would be 7% of salary, for silver it would be 6% of salary and for bronze it would be 5% of salary. Later, in another exercise (part 2), we will further improve this monthly premium computation logic based on additional factors.
+
+Implementation specifics:
+
++ Move insured & insurancePlan fields from Patient.java to User.java. Earlier, these fields were specific to Patient. But, now since we are talking about staff members also having health insurance and since both Staff & Patient are sub-classes of User, we can now move these two fields along with their getters and setters into User class.
+
++ Let's introduce monthly premium calculation logic in classes corresponding to different insurance plans as the logic is dependent on insurance plan chosen in addition to salary. So, let's introduce the following abstract method in the super class HealthInsurancePlan and this method would be overridden in specific sub-classes.
+
+public abstract double computeMonthlyPremium(double salary);
+
++ You would also need InsuranceBrand.java from previous exercise and there is no change in that class though.
+
+Your code will be tested for correctness via automated tests. So, do submit your code to check for correctness. If you are unable to complete the exercise after considerable effort, then feel free to private message (pls. do not submit in Q&A discussion board) me your code and I can provide feedback.
+
+Thanks & Happy Coding!!
