@@ -1,0 +1,12 @@
+
+
+Below code is from the previous demonstration. It uses the reduce method that takes 3 parameters. 
+
+Re-implement it so that the reduce method would take only 2 parameters, i.e., second overloaded reduce method and it should still return a StringBuilder.
+
+StringBuilder concat = Arrays.stream(grades)
+        .reduce(new StringBuilder(),
+                              (sb, s) -> sb.append(s),
+                              (sb1, sb2) -> sb1.append(sb2));
+
+Hint: You would use an intermediate operation before the reduce() method as part of the re-implementation.
